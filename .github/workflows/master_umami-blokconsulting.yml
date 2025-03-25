@@ -11,6 +11,8 @@ on:
 
 jobs:
   build:
+    env:
+      DATABASE_URL: 'value'
     runs-on: ubuntu-latest
     permissions:
       contents: read #This is required for actions/checkout
@@ -22,6 +24,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22.x'
+      
+      - name: Create .env file
+        run: |
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > .env
 
       - name: npm install, build, and test
         run: |
