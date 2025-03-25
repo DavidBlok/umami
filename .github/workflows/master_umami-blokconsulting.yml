@@ -11,8 +11,6 @@ on:
 
 jobs:
   build:
-    env:
-      DATABASE_URL: 'value'
     runs-on: ubuntu-latest
     permissions:
       contents: read #This is required for actions/checkout
