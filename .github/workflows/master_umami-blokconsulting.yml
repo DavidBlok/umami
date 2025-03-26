@@ -33,8 +33,17 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
+      - name: Prepare Deployment Artifact
+        run: |
+          mkdir deploy
+          cp -R .next deploy/
+          cp -R public deploy/
+          cp package.json deploy/
+          [ -f next.config.js ] && cp next.config.js deploy/
+          [ -f package-lock.json ] && cp package-lock.json deploy/
+
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: cd deploy && zip -r ../release.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
