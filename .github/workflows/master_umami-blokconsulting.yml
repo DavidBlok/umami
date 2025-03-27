@@ -35,15 +35,11 @@ jobs:
 
       - name: Prepare Deployment Artifact
         run: |
-          mkdir deploy
-          cp -R .next deploy/
-          cp -R public deploy/
-          cp package.json deploy/
-          cp next.config.js deploy/
-          cp package-lock.json deploy/
+          cp -R ./public ./.next/standalone/public
+          cp -R ./.next/static ./.next/standalone/public
 
       - name: Zip artifact for deployment
-        run: cd deploy && zip -r ../release.zip .
+        run: cd .next/standalone && zip -r ../../release.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
