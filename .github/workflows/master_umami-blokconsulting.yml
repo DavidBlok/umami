@@ -36,7 +36,7 @@ jobs:
       - name: Prepare Deployment Artifact
         run: |
           cp -R ./public ./.next/standalone/public
-          cp -R ./.next/static ./.next/standalone/public
+          cp -R ./.next/static ./.next/standalone/.next/static
 
       - name: Zip artifact for deployment
         run: cd .next/standalone && zip -r ../../release.zip .
