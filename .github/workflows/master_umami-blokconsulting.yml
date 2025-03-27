@@ -84,4 +84,5 @@ jobs:
           app-name: 'umami-blokconsulting'
           slot-name: 'Production'
           package: .
+          clean: true
           
