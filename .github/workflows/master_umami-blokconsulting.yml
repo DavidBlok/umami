@@ -39,8 +39,8 @@ jobs:
           cp -R .next deploy/
           cp -R public deploy/
           cp package.json deploy/
-          [ -f next.config.js ] && cp next.config.js deploy/
-          [ -f package-lock.json ] && cp package-lock.json deploy/
+          cp next.config.js deploy/
+          cp package-lock.json deploy/
 
       - name: Zip artifact for deployment
         run: cd deploy && zip -r ../release.zip .
